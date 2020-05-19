@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/Chart.css">
+    <title>Coronavirus Tracker</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar shadow-sm fixed-top navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Coronavirus Ghana</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="#" tabindex="-1">Disabled</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+    
+    <main>
+
+     
+              <!--Disease Data-->
+
+       <div class="casesReport shadow-sm mb-4">
+        <div class="jumbotron text-center" id="cases">
+            <p>Confirmed Cases</p>
+            <p id="confirmedCases">5,735</p>
+            <h6><span class="badge badge-secondary">this week</span> +21 </h6>
+        </div>
+        <hr class="my-1">
+
+        <div class="jumbotron text-center">
+            <p>Recoveries</p>
+            <p id="recoveries">1,754</p>
+            <h6><span class="badge badge-secondary">this week</span> +1,506 </h6>
+        </div>
+        <hr class="my-1">
+
+        <div class="jumbotron text-center" id="death">
+          <p>Deaths</p>
+          <p id="deaths">29</p>
+          <h6><span class="badge badge-secondary">this week</span> +5 </h6>
+        </div>
+      </div>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="row">
+          <div class="col-sm-6 col-md-6 pb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Recovery rate</h5>
+                <div class="doughnutText"> 15% <br> of total cases</div>
+                <canvas id="donotRecChart" width="200" height="200"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 pb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Death rate</h5>
+                <div class="doughnutText"> 0.5% <br> of total cases</div>
+                <canvas id="donotDeathChart" width="200" height="200"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 pb-3">
+            <div class="card shadow">
+              <div class="card-body">
+                <h5 class="card-title">Daily Count</h5>
+
+                <!--TAB-->
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <button id="changeToLine" class="btn btn-sm nav-link active" data-toggle="tab">Line Chart</button>
+                  </li>
+                  <li class="nav-item">
+                    <button id="changeToBar" class="btn nav-link" data-toggle="tab">Bar Chart</button>
+                  </li>
+                </ul>
+
+                <canvas id="myChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6">
+            <div class="card shadow">
+              <div class="card-body">
+                <h5 class="card-title">Cases Over Time</h5>
+
+                <!--Cases Over Time-->
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <button class="btn btn-sm nav-link active">Line Chart</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="btn nav-link">Bar Chart</button>
+                  </li>
+                </ul>
+
+                <canvas id="newbarChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+        <div class="col-md-4">
+          <div class="container myTable shadow-sm">
+            <table class="table table-hover">
+                <thead class="thead">
+                  <tr>
+                    <th scope="col">Region</th>
+                    <th scope="col">Confirmed Cases</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Greater Accra</th>
+                    <td>4,204</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Ashanti</th>
+                    <td>788</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Central</th>
+                    <td>192</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Eastern</th>
+                    <td>99</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Western</th>
+                    <td>61</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Western North</th>
+                    <td>57</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Volta</th>
+                    <td>34</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Upper East</th>
+                    <td>26</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Oti</th>
+                    <td>24</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">Upper West</th>
+                    <td>21</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+   
+    </main>
+
+    <footer class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-sm-2 col-md-4 text-justify p-4">
+          <h5>Data</h5>
+          <p>This website scraps the GHS website for regular update. 
+            It then returns a json file which feeds this site with the updated statistics</p>
+        </div>
+        <hr class="my-3">
+        <div class="col-sm-2 col-md-4 text-justify p-4">
+          <h5>Created and Managed</h5>
+          <p>This website is designed and maintained by Stephen</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="javascript/jquery-slim.min.js"></script>
+    <script src="javascript/popper.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/Chart.bundle.min.js"></script>
+    <script src="javascript/Chart.bundle.js"></script>
+    <script src="javascript/statistics.js"></script>
+</body>
+</html>
