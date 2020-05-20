@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/Chart.css">
-    <title>Coronavirus Tracker</title>
+    
+    <title>Coronavirus Visuals</title>
 </head>
 <body>
     <header>
@@ -45,21 +46,21 @@
        <div class="casesReport shadow-sm mb-4">
         <div class="jumbotron text-center" id="cases">
             <p>Confirmed Cases</p>
-            <p id="confirmedCases">5,735</p>
+            <p id="confirmedCases"></p>
             <h6><span class="badge badge-secondary">this week</span> +21 </h6>
         </div>
         <hr class="my-1">
 
         <div class="jumbotron text-center">
             <p>Recoveries</p>
-            <p id="recoveries">1,754</p>
+            <p id="recoveries"></p>
             <h6><span class="badge badge-secondary">this week</span> +1,506 </h6>
         </div>
         <hr class="my-1">
 
         <div class="jumbotron text-center" id="death">
           <p>Deaths</p>
-          <p id="deaths">29</p>
+          <p id="deaths"></p>
           <h6><span class="badge badge-secondary">this week</span> +5 </h6>
         </div>
       </div>
@@ -223,5 +224,6 @@
     <script src="javascript/Chart.bundle.min.js"></script>
     <script src="javascript/Chart.bundle.js"></script>
     <script src="javascript/statistics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
 </body>
 </html>

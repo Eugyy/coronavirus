@@ -1,0 +1,207 @@
+{
+    "data": [
+
+        
+        {
+            "greaterAccra": [
+                {
+                    "cases": 4536,
+                    "hotspots": {
+                        
+                        "ablekumaCentral": 10,
+                        "ablekumaSouth": 3,
+                        "accraMetro": 45,
+                        "adenta": 2,
+                        "ayawasoCentral": 3,
+                        "ayawasoEast": 6,
+                        "ayawasoNorth": 7,
+                        "ayawasoWest": 20,
+                        "ashaiman": 14,
+                        "gaCentral": 4,
+                        "gaEast": 10,
+                        "gaNorth": 4,
+                        "gaSouth": 7,
+                        "gaWest": 2,
+                        "korleKlottey": 24,
+                        "kponeKatamanso": 1,
+                        "krowo": 1,
+                        "laNkwantangMedina": 19,
+                        "laDadeKotopon": 5,
+                        "ledzokuku": 49,
+                        "ningoPrampram": 3,
+                        "okaiKoiNorth": 8,
+                        "temaMetro": 14,
+                        "temaWest": 4,
+                        "weijaGbawe": 1
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "eastern": [
+                {
+                    "cases": 100,
+                    "hotspots": {
+                        
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "central": [
+                {
+                    "cases": 256,
+                    "hotspots": {
+                        "agonaWest": 1,
+                        "amhd": 3,
+                        "capeCoast": 12,
+                        "elmina": 21,
+                        "gomoaWest": 3,
+                        "kasoa": 20
+
+
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "western": [
+                {
+                    "cases": 111,
+                    "hotspots": {
+                        "ekm": 1,
+                        "presteaValley": 2,
+                        "sekondiTakoradiMunicipal": 22,
+                        "tarkwaNsuaem": 14
+                        
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "upperWest": [
+                {
+                    "cases": 21,
+                    "hotspots": {
+                        
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "volta": [
+                {
+                    "cases": 41,
+                    "hotspots": {
+                        "ho": 1,
+                        "hohoe": 3,
+                        "kpando": 1,
+                        "akatsiSouth": 1,
+                        "ketuSouth": 1
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "ashanti": [
+                {
+                    "cases": 888,
+                    "hotspots": {
+                        "afigyaKwabreSouth": 1,
+                        "atwimaKwanwoma": 1,
+                        "bosomtwe": 1,
+                        "dunkwa": 2,
+                        "kumasiMetro": 24,
+                        "obuasi": 43,
+                        "oforikrom": 5,
+                        "suame": 2,
+                        "tafo": 1
+                    }
+                }
+            ]
+           
+        },
+        {
+            "upperEast": [
+                {
+                    "cases": 26,
+                    "hotspots": {
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "northern": [
+                {
+                    "cases": 31,
+                    "hotspots": {
+                        "tamaleMetro": 12
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "northEast": [
+                {
+                    "cases": 2,
+                    "hotspots": {
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "oti": [
+                {
+                    "cases": 26,
+                    "hotspots": {
+                        "nkwanta": 2,
+                        "krachiEast": 2
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "westernNorth": [
+                {
+                    "cases": 57,
+                    "hotspots": {
+                    }
+                }
+            ]
+           
+        },
+
+        {
+            "bono": [
+                {
+                    "cases": 178,
+                    "hotspots": {
+                    }
+                }
+            ]
+           
+        }
+
+
+    ] 
+}

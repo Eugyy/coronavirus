@@ -3,6 +3,46 @@ function activaTab(tab){
     $('.nav-tabs button[tab]').tab(show);
 }
 
+//Load JSON FILE
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'coronaStats.json');
+xhr.addEventListener('load', processJSON);
+xhr.send();
+
+// add comma to numbers in thousand
+
+
+function processJSON(event) {
+    var json = this.responseText;
+    var obj = JSON.parse(json);
+   // data object
+    var myData = obj.data;
+    // last update object
+    var lastUpdate = myData.length - 1;
+    var confirmedCases = myData[lastUpdate].totalCases;
+    var recoveries = myData[lastUpdate].recoveries;
+    var deaths = myData[lastUpdate].death;
+
+    // Insert values in DOM
+
+    $('#confirmedCases').text( confirmedCases );
+    $('#recoveries').text( recoveries );
+    $('#deaths').text( deaths );
+
+    // Graph Data objects
+    var arr = [];
+    for (i = 0; i < myData.length; i++){
+
+      var  dt = myData[i].date;
+      arr.push(dt);
+
+        
+    }
+    console.log(arr);
+
+
+   
+}
 
 //Data Source
 var chartData = {
@@ -35,7 +75,9 @@ var cummulativeData = {
 };
 
 
-//Daily Count
+        //Counter animation
+      
+            //Daily Count
 
 
     /*Line chart*/
