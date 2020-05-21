@@ -334,7 +334,17 @@
             "recoveries": "1773",
             "death": "31",
             "critical": "8"
+        },
+        
+        {
+            "date": "2020-05-19",
+            "totalCases": "6269",
+            "recoveries": "1898",
+            "death": "31",
+            "critical": "0"
         }
+
+
 
     
 

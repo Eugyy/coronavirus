@@ -12,48 +12,107 @@ xhr.send();
 // add comma to numbers in thousand
 
 
+
+
+//LOAD CORONASTATS JSON
 function processJSON(event) {
     var json = this.responseText;
     var obj = JSON.parse(json);
+    
    // data object
     var myData = obj.data;
+    
     // last update object
     var lastUpdate = myData.length - 1;
     var confirmedCases = myData[lastUpdate].totalCases;
     var recoveries = myData[lastUpdate].recoveries;
     var deaths = myData[lastUpdate].death;
 
+    //Calculate percentage fuction
+    function percentage(number, total){
+        return((number/total) * 100).toFixed(1);
+    }
+    var recoveryRate = percentage(recoveries, confirmedCases);
+    var deathRate = percentage(deaths, confirmedCases);
+
+    // Days of this week
+
+    var startOfWeek = moment().startOf('week');
+    var endOfWeek = moment().endOf('week');
+    var days = [];
+    var day = startOfWeek;
+
+    while (day <= endOfWeek){
+        days.push(day.toDate().toDateString());
+        day = day.clone().add(1, 'd');
+    }
+
+//     days.forEach(myFunction);
+//    function myFunction(date){
+//         moment(date).format('YYYY-MM-DD');
+//     }
+
+   var testDate = moment();  
+   
+    console.log(testDate.format('YYYY-MM-DD'));
+
+    // Format thousand with comma
+    function formatNum (num){
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
     // Insert values in DOM
 
-    $('#confirmedCases').text( confirmedCases );
-    $('#recoveries').text( recoveries );
-    $('#deaths').text( deaths );
+    $('#confirmedCases').text( formatNum(confirmedCases) );
+    $('#recoveries').text( formatNum(recoveries) );
+    $('#deaths').text( formatNum(deaths) );
+    $('#recoveryRate').html(`${recoveryRate}% <br> of total cases`);
+    $('#deathRate').html(`${deathRate}% <br> of total cases`);
+    
 
-
-
-    // Graph Data objects
-    var arr = [];
+    // All Date objects
+    var allDates = [];
+    var allCases = [];
 
     for (i = 0; i < myData.length; i++){
 
       var  dt = myData[i].date;
-      arr.push(dt); 
-
+      allDates.push(dt); 
+      var ac = myData[i].totalCases;
+      allCases.push(ac);
     }
-    console.log(arr);
+ 
+
+    
+// Past 7 Days Dates
+
+var lastSevenUpdates;
+    lastSevenUpdates = myData.slice(-7);
+
+var lastSevenDates = [];
+var lastSevenCases = [];
+
+for (i = 0; i < lastSevenUpdates.length; i++){
+
+  var  lsd = lastSevenUpdates[i].date;
+  lastSevenDates.push(lsd); 
+
+  var  lsc = lastSevenUpdates[i].totalCases;
+  lastSevenCases.push(lsc); 
+
+}
+
 
 
    
-}
 
-//Data Source
+
+// Last Seven Updates Data Source
 var chartData = {
 
-    labels: ['1 May', '2 May', '3 May', '4 May', '5 May', '6 May',
-    '7 May', '8 May'],
+    labels: lastSevenDates,
 
     datasets: [{
-        data: [23,5,67,33,56,87,32,54,65,43,35,65,43],
+        data: lastSevenCases,
         backgroundColor: '#3dc9c9',
         borderColor: '#3dc9c9',
         fill: false
@@ -64,15 +123,14 @@ var chartData = {
 //Data Source
 var cummulativeData = {
 
-    labels: ['2020-03-12', '2020-03-15', '2020-03-17', '2020-03-18', '2020-03-19', '2020-03-20',
-    '2020-03-21', '2020-03-22', '2020-04-26', '2020-04-30', '2020-05-7', '2020-05-9', '2020-05-11',
-    '2020-05-17', '2020-05-18'],
+    labels: allDates,
 
     datasets: [{
-        data: [2,6,7,9,11,16,21,24,68,132,137,141,1550, 3091, 4700, 5127, 5638, 5735],
+        data: allCases,
         backgroundColor: '#3dc9c9',
         borderColor: '#3dc9c9',
-        fill: false
+        fill: false,
+
     }]
 };
 
@@ -91,6 +149,10 @@ var cummulativeData = {
         data: chartData,
    
         options: {
+            legend: {
+                display: false
+    
+            },
            scales: {
                yAxes: [{
                    gridLines: {
@@ -121,6 +183,10 @@ function() {
         data: chartData,
         options: {
             scales: {
+                legend: {
+                    display: false
+        
+                },
                 yAxes: [{
                     gridLines: {
                         display: false
@@ -156,6 +222,11 @@ function() {
             data: chartData,
        
             options: {
+
+                legend: {
+                    display: false
+        
+                },
                scales: {
                    yAxes: [{
                        gridLines: {
@@ -182,20 +253,28 @@ function() {
 
 /*Bar chart*/
 
-var ctx = document.getElementById('newbarChart');
-
-
-var newbarChart = new Chart(ctx, {
+ctx = document.getElementById('newbarChart');
+    new Chart(ctx, {
     type: 'line',
     data: cummulativeData,
     options: {
+
+        legend: {
+            display: false
+
+        },
+        elements: {
+            point: {
+                radius: 1,
+            }
+        }, 
         scales: {
             yAxes: [{
                 gridLines: {
-                    display: false
+                    display: true
                 },
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: false
                 }
             }],
 
@@ -216,41 +295,18 @@ var newbarChart = new Chart(ctx, {
 
 // Doughnut charts
 
-// Create an inner text
-
-/* Chart.pluginService.register({
-    beforeDraw: function(chart) {
-        var width = chart.chart.width,
-            height = chart.chart.height,
-            ctx = chart.chart.ctx;
-
-        ctx.restore();
-        var fontSize = (height / 114).toFixed(2);
-        ctx.font = fontSize + 'em sans-serif';
-        ctx.textBaseline = 'middle';
-
-        var text = '75%';
-            textX = Math.round((width - ctx.measureText(text).width) / 2),
-            textY = height / 2;
-
-        ctx.fillText(text, textX, textY);
-        ctx.save();
-
-    }
-});  */
-
           /* Recovery Doghnut chart*/
 
-          var ctx = document.getElementById('donotRecChart');
+         ctx = document.getElementById('donotRecChart');
           var donotRecChart = new Chart(ctx, {
           
               type: 'doughnut',
               data: {
-                  labels: ['Cases', 'Recovery'],
+                  labels: ['Cases', 'Recovered'],
                   datasets: [{
                       label: 'Recovery rate',
-                      backgroundColor: ['#e8e8e8', '#3e95cd'],
-                      data: [5530, 674],
+                      backgroundColor: ['#e8e8e8', '#3dc9c9'],
+                      data: [confirmedCases, recoveries],
                       
                   }]
               },
@@ -268,8 +324,8 @@ var newbarChart = new Chart(ctx, {
           
                       /* Death Doghnut chart*/
           
-          var ctx = document.getElementById('donotDeathChart');
-          var donotDeathChart = new Chart(ctx, {
+          ctx = document.getElementById('donotDeathChart');
+            new Chart(ctx, {
                       
               type: 'doughnut',
               data: {
@@ -277,7 +333,7 @@ var newbarChart = new Chart(ctx, {
                   datasets: [{
                       label: 'Death rate',
                       backgroundColor: ['#e8e8e8', '#9c1010'],
-                      data: [5530, 25]
+                      data: [confirmedCases, deaths]
                   }]
               },
               options: {
@@ -288,4 +344,7 @@ var newbarChart = new Chart(ctx, {
               }
                       
           });
+
+        // end of document function
+        }
           

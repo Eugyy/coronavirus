@@ -23,15 +23,11 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/index.html#top">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="#" tabindex="-1">Disabled</a>
+                  <a class="nav-link" href="/index.html#footerSection">About Data <span class="sr-only"></span></a>
                 </li>
               </ul>
             </div>
@@ -43,25 +39,25 @@
      
               <!--Disease Data-->
 
-       <div class="casesReport shadow-sm mb-4">
+       <div class="casesReport shadow-sm mb-4" id="top">
         <div class="jumbotron text-center" id="cases">
             <p>Confirmed Cases</p>
             <p id="confirmedCases"></p>
-            <h6><span class="badge badge-secondary">this week</span> +21 </h6>
+           <!-- <h6><span class="badge badge-secondary">this week</span> +21 </h6>-->
         </div>
         <hr class="my-1">
 
         <div class="jumbotron text-center">
             <p>Recoveries</p>
             <p id="recoveries"></p>
-            <h6><span class="badge badge-secondary">this week</span> +1,506 </h6>
+            <!--<h6><span class="badge badge-secondary">this week</span> +1,506 </h6>-->
         </div>
         <hr class="my-1">
 
         <div class="jumbotron text-center" id="death">
           <p>Deaths</p>
           <p id="deaths"></p>
-          <h6><span class="badge badge-secondary">this week</span> +5 </h6>
+         <!-- <h6><span class="badge badge-secondary">this week</span> +5 </h6>-->
         </div>
       </div>
 
@@ -70,21 +66,23 @@
         <div class="col-md-8">
 
           <div class="row">
+            <!--Recovery Rate Section-->
           <div class="col-sm-6 col-md-6 pb-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Recovery rate</h5>
-                <div class="doughnutText"> 15% <br> of total cases</div>
+                <div class="doughnutText" id="recoveryRate"> </div>
                 <canvas id="donotRecChart" width="200" height="200"></canvas>
               </div>
             </div>
           </div>
 
+           <!--Death Rate Section-->
           <div class="col-sm-6 col-md-6 pb-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Death rate</h5>
-                <div class="doughnutText"> 0.5% <br> of total cases</div>
+                <div class="doughnutText" id="deathRate"> </div>
                 <canvas id="donotDeathChart" width="200" height="200"></canvas>
               </div>
             </div>
@@ -105,27 +103,28 @@
                   </li>
                 </ul>
 
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas class="pt-2" id="myChart" width="400" height="400"></canvas>
               </div>
             </div>
           </div>
 
+          <!--Cases Over Time-->
           <div class="col-sm-6 col-md-6">
             <div class="card shadow">
               <div class="card-body">
                 <h5 class="card-title">Cases Over Time</h5>
 
-                <!--Cases Over Time-->
-                <ul class="nav nav-tabs">
+                <!--TOGGLE BUTTON-->
+                <!-- <ul class="nav nav-tabs">
                   <li class="nav-item">
                     <button class="btn btn-sm nav-link active">Line Chart</button>
                   </li>
                   <li class="nav-item">
                     <button class="btn nav-link">Bar Chart</button>
                   </li>
-                </ul>
+                </ul> --> 
 
-                <canvas id="newbarChart" width="400" height="400"></canvas>
+                <canvas class="pt-2" id="newbarChart" width="400" height="400"></canvas>
               </div>
             </div>
           </div>
@@ -142,78 +141,29 @@
                     
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Greater Accra</th>
-                    <td>4,204</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Ashanti</th>
-                    <td>788</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Central</th>
-                    <td>192</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Eastern</th>
-                    <td>99</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Western</th>
-                    <td>61</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Western North</th>
-                    <td>57</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Volta</th>
-                    <td>34</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Upper East</th>
-                    <td>26</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Oti</th>
-                    <td>24</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">Upper West</th>
-                    <td>21</td>
-                    
-                  </tr>
+                <tbody id="data-table">
+
                 </tbody>
               </table>
         </div>
         </div>
       </div>
     </div>
-
-
-
    
     </main>
 
-    <footer class="container-fluid mt-2">
+    <footer class="container-fluid mt-2" id="footerSection">
       <div class="row">
         <div class="col-sm-2 col-md-4 text-justify p-4">
-          <h5>Data</h5>
-          <p>This website scraps the GHS website for regular update. 
-            It then returns a json file which feeds this site with the updated statistics</p>
+          <h5>Data Source</h5>
+          <p>This website fetches its data from the Ghana Health Service page. <br> 
+            Data is automatically updated and refreshed every hour.
+          </p>
         </div>
         <hr class="my-3">
         <div class="col-sm-2 col-md-4 text-justify p-4">
           <h5>Created and Managed</h5>
-          <p>This website is designed and maintained by Stephen</p>
+          <p>This website is designed and maintained by Stephen Appiah</p>
         </div>
       </div>
     </footer>
@@ -223,7 +173,8 @@
     <script src="javascript/bootstrap.min.js"></script>
     <script src="javascript/Chart.bundle.min.js"></script>
     <script src="javascript/Chart.bundle.js"></script>
-    <script src="javascript/statistics.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+    <script src="javascript/branchStats.js"></script>
+    <script src="javascript/myTable.js"></script>
+    <script src="javascript/moment.js"></script>
 </body>
 </html>
