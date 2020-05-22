@@ -149,6 +149,9 @@ var cummulativeData = {
         data: chartData,
    
         options: {
+            title: {
+                display: true
+            },
             legend: {
                 display: false
     
@@ -183,6 +186,9 @@ function() {
         data: chartData,
         options: {
             scales: {
+                title: {
+                    display: true
+                },
                 legend: {
                     display: false
         
@@ -222,7 +228,9 @@ function() {
             data: chartData,
        
             options: {
-
+                title: {
+                    display: true
+                },
                 legend: {
                     display: false
         
@@ -258,7 +266,9 @@ ctx = document.getElementById('newbarChart');
     type: 'line',
     data: cummulativeData,
     options: {
-
+        title: {
+            display: true
+        },
         legend: {
             display: false
 
@@ -312,7 +322,9 @@ ctx = document.getElementById('newbarChart');
               },
               options: {
                   title: {
-                      display: true
+                      display: true,
+                      text: 'Recovery Rate',
+                      fontFamily: "'Quicksand', sans-serif"
                   },
                   cutoutPercentage: 70
               }

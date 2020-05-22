@@ -7,6 +7,10 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+a {
+    color: #26b8b8;
+}
+
 .navbar {
     background-color: #3dc9c9;
 }

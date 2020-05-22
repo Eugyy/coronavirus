@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/bootstrap-grid.min.css">
@@ -11,10 +10,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Chart.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <title>Coronavirus Visuals</title>
+   
+    <title>Coronavirus Ghana</title>
 </head>
 <body>
+
     <header>
         <nav class="navbar shadow-sm fixed-top navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Coronavirus Ghana</a>
@@ -34,151 +34,157 @@
             </div>
           </nav>
     </header>
-    
+
     <main>
+        <div class="casesReport justify-content-center shadow-sm mb-4" id="top">
+            <div class="jumbotron text-center" id="cases">
+                <p id="boxConfirmed">Confirmed</p>
+                <p id="confirmedCases"></p>
+               <!-- <h6><span class="badge badge-secondary">this week</span> +21 </h6>-->
+            </div>
+            <hr class="my-1">
+    
+            <div class="jumbotron text-center">
+                <p id="boxRecovered">Recovered</p>
+                <p id="recoveries"></p>
+                <!--<h6><span class="badge badge-secondary">this week</span> +1,506 </h6>-->
+            </div>
+            <hr class="my-1">
+    
+            <div class="jumbotron text-center" id="death">
+              <p id="boxDeath">Deaths</p>
+              <p id="deaths"></p>
+             <!-- <h6><span class="badge badge-secondary">this week</span> +5 </h6>-->
+            </div>
+          </div>
 
-     
-              <!--Disease Data-->
+          <!-- Container -->
+        <div class="container">
+            <div class="row">
 
-       <div class="casesReport justify-content-center shadow-sm mb-4" id="top">
-        <div class="jumbotron text-center" id="cases">
-            <p id="boxConfirmed">Confirmed</p>
-            <p id="confirmedCases"></p>
-           <!-- <h6><span class="badge badge-secondary">this week</span> +21 </h6>-->
+                <div class="col">
+                  <h5 class="text-center text-muted">Data Visualisations</h3>
+                    <!--Navigation for cards-->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Recovery</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Death</a>
+                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Daily</a>
+                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-time" role="tab" aria-controls="nav-contact" aria-selected="false">All</a>
+                        </div>
+                    </nav>
+                      <div class="tab-content pt-2" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">Recovery rate</h5>
+                                  <div class="doughnutText" id="recoveryRate"> </div>
+                                  <canvas id="donotRecChart" width="200" height="200"></canvas>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">Death rate</h5>
+                                  <div class="doughnutText" id="deathRate"> </div>
+                                  <canvas id="donotDeathChart" width="200" height="200"></canvas>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="card-body">
+                                <h5 class="card-title">Daily Count</h5>
+                
+                                <!--TAB-->
+                                <ul class="nav nav-tabs">
+                                  <li class="nav-item">
+                                    <button id="changeToLine" class="btn btn-sm nav-link active" data-toggle="tab">Line Chart</button>
+                                  </li>
+                                  <li class="nav-item">
+                                    <button id="changeToBar" class="btn nav-link" data-toggle="tab">Bar Chart</button>
+                                  </li>
+                                </ul>
+                
+                                <canvas class="pt-2" id="myChart" width="400" height="400"></canvas>
+                              </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-time" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="card-body">
+                                <h5 class="card-title">Cases Over Time</h5>
+                
+                                <!--TOGGLE BUTTON-->
+                                <!-- <ul class="nav nav-tabs">
+                                  <li class="nav-item">
+                                    <button class="btn btn-sm nav-link active">Line Chart</button>
+                                  </li>
+                                  <li class="nav-item">
+                                    <button class="btn nav-link">Bar Chart</button>
+                                  </li>
+                                </ul> --> 
+                
+                                <canvas class="pt-2" id="newbarChart" width="400" height="400"></canvas>
+                              </div>
+                        </div>
+                      </div>
+
+
+                </div>
+            </div>
         </div>
-        <hr class="my-1">
 
-        <div class="jumbotron text-center">
-            <p id="boxRecovered">Recovered</p>
-            <p id="recoveries"></p>
-            <!--<h6><span class="badge badge-secondary">this week</span> +1,506 </h6>-->
-        </div>
-        <hr class="my-1">
+        <div class="container myTable shadow-sm">
+          <h5 class="text-center text-muted">Cases Per Region</h5>
+          <table class="table table-hover">
+              <thead class="thead">
+                <tr>
+                  <th scope="col">Region</th>
+                  <th scope="col">Confirmed Cases</th>
+                  
+                </tr>
+              </thead>
+              <tbody id="data-table">
 
-        <div class="jumbotron text-center" id="death">
-          <p id="boxDeath">Deaths</p>
-          <p id="deaths"></p>
-         <!-- <h6><span class="badge badge-secondary">this week</span> +5 </h6>-->
-        </div>
+              </tbody>
+            </table>
       </div>
 
-  <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-
-          <div class="row">
-            <!--Recovery Rate Section-->
-          <div class="col-sm-6 col-md-6 pb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Recovery rate</h5>
-                <div class="doughnutText" id="recoveryRate"> </div>
-                <canvas id="donotRecChart" width="200" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-
-           <!--Death Rate Section-->
-          <div class="col-sm-6 col-md-6 pb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Death rate</h5>
-                <div class="doughnutText" id="deathRate"> </div>
-                <canvas id="donotDeathChart" width="200" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-6 pb-3">
-            <div class="card shadow">
-              <div class="card-body">
-                <h5 class="card-title">Daily Count</h5>
-
-                <!--TAB-->
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <button id="changeToLine" class="btn btn-sm nav-link active" data-toggle="tab">Line Chart</button>
-                  </li>
-                  <li class="nav-item">
-                    <button id="changeToBar" class="btn nav-link" data-toggle="tab">Bar Chart</button>
-                  </li>
-                </ul>
-
-                <canvas class="pt-2" id="myChart" width="400" height="400"></canvas>
-              </div>
-            </div>
-          </div>
-
-          <!--Cases Over Time-->
-          <div class="col-sm-6 col-md-6">
-            <div class="card shadow">
-              <div class="card-body">
-                <h5 class="card-title">Cases Over Time</h5>
-
-                <!--TOGGLE BUTTON-->
-                <!-- <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <button class="btn btn-sm nav-link active">Line Chart</button>
-                  </li>
-                  <li class="nav-item">
-                    <button class="btn nav-link">Bar Chart</button>
-                  </li>
-                </ul> --> 
-
-                <canvas class="pt-2" id="newbarChart" width="400" height="400"></canvas>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        </div>
-        <div class="col-md-4">
-          <div class="container myTable shadow-sm">
-            <table class="table table-hover">
-                <thead class="thead">
-                  <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Confirmed Cases</th>
-                    
-                  </tr>
-                </thead>
-                <tbody id="data-table">
-
-                </tbody>
-              </table>
-        </div>
-        </div>
-      </div>
-    </div>
-   
     </main>
 
     <footer class="container-fluid mt-2" id="footerSection">
       <div class="row">
         <div class="col-sm-2 col-md-4 text-justify p-4">
           <h5>Data Source</h5>
-          <p>This website visualizes data from the Ghana Health Service page. <br> 
+          <p>This website visualises data from the Ghana Health Service page.
             Data is automatically updated and refreshed every hour.
+            
           </p>
         </div>
         <hr class="my-3">
         <div class="col-sm-2 col-md-4 text-justify p-4">
-          <h5>Created and Managed</h5>
-          <p>This website is designed and maintained by Stephen Appiah</p>
+          <h5>Credits</h5>
+          <p>Developed and maintained by Stephen Appiah.
+             Developers can check out my
+            <a href="http://github.com/stephappiah/coronavirus">github</a> for source codes. 
+            <hr>
+            Ghana's coronavirus cases: <a href="https://stephappiah.github.io/coronavirus/coronaStats.json" type="button" class="btn btn-info">Get API</a>
+             
+          </p>
         </div>
       </div>
     </footer>
+    
 
-    <!-- <script src="javascript/jquery-slim.min.js"></script>
+     <!-- <script src="javascript/jquery-slim.min.js"></script>
     <script src="javascript/popper.min.js"></script>
     <script src="javascript/bootstrap.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <!-- <script src="javascript/Chart.bundle.min.js"></script>
-    <script src="javascript/Chart.bundle.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
+    <script src="javascript/Chart.bundle.min.js"></script>
+    <script src="javascript/Chart.bundle.js"></script>
     <script src="javascript/branchStats.js"></script>
     <script src="javascript/myTable.js"></script>
     <script src="javascript/moment.js"></script>
