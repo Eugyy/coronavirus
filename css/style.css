@@ -4,6 +4,7 @@
 }
 body {
     background-color: #ffffff;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .navbar {
@@ -14,20 +15,17 @@ body {
 
 #confirmedCases{
     font-size: 3rem;
-    color: rgb(73, 73, 62);
-   
+    font-weight: bold;
 }
-
-
 
 #recoveries {
     font-size: 3rem;
-    color: green;
+    font-weight: bold;
 }
 
 #deaths{
     font-size: 3rem;
-    color: brown;
+    font-weight: bold;
 }
 
 .casesReport{
@@ -39,6 +37,30 @@ body {
     margin-bottom: 0;
     margin-top: 1rem;
     
+}
+
+#boxConfirmed{
+    background-color: #fab800;
+    color: white;
+    font-weight: bold;
+    padding: 0 2pt 0 2pt;
+    font-size: small;
+}
+
+#boxRecovered{
+    background-color: #16c0b5d8;
+    color: white;
+    font-weight: bold;
+    padding: 0 2pt 0 2pt;
+    font-size: small;
+}
+
+#boxDeath{
+    background-color: #000000a1;
+    color: white;
+    font-weight: bold;
+    padding: 0 2pt 0 2pt;
+    font-size: small;
 }
 
 .jumbotron p{
@@ -92,17 +114,37 @@ footer{
     }
 }
 
+/*Smaller screens*/
 @media (min-width: 320px) and (max-width: 420px) {
     .jumbotron {
         padding-bottom: 1rem;
         padding-top: 0;
     }
 
-    #cases {
-        margin-top: 5rem;
-    }
-
     .myTable {
         margin-top: 2rem;
     }
+
+    /* Cases Report Jumbotron*/
+
+    .casesReport{
+        display: flex;
+        margin-top: 5rem;
+    }
+
+    #confirmedCases{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #recoveries {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    #deaths{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
 }
