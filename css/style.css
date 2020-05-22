@@ -36,6 +36,10 @@ a {
     padding: 0;
 }
 
+.card-header {
+    background-color: white;
+}
+
 .jumbotron{
     background-color: white;
     margin-bottom: 0;
@@ -60,7 +64,7 @@ a {
 }
 
 #boxDeath{
-    background-color: #000000a1;
+    background-color: #d80b0ba1;
     color: white;
     font-weight: bold;
     padding: 0 2pt 0 2pt;
@@ -69,6 +73,10 @@ a {
 
 .jumbotron p{
     margin-bottom: 0;
+}
+
+#activeCasesGraph {
+    display: none;
 }
 
 .card-body {
@@ -141,6 +149,12 @@ footer{
         font-weight: bold;
     }
 
+    #activeCases{
+        font-size: 2rem;
+        font-weight: bold;
+        color: #d80b0ba1;
+    }
+
     #recoveries {
         font-size: 2rem;
         font-weight: bold;
@@ -150,5 +164,13 @@ footer{
         font-size: 2rem;
         font-weight: bold;
     }
-    
+
+    #activeCasesInfo{
+        margin-bottom: 2rem;
+    }
+    #activeCasesGraph{
+        margin-bottom: 2rem;
+    }
+
+
 }

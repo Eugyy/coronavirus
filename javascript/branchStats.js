@@ -27,6 +27,18 @@ function processJSON(event) {
     var confirmedCases = myData[lastUpdate].totalCases;
     var recoveries = myData[lastUpdate].recoveries;
     var deaths = myData[lastUpdate].death;
+    var severe = myData[lastUpdate].severe;
+    var critical = myData[lastUpdate].critical;
+
+    // Calculation for active cases
+    var clearedCases = parseInt(recoveries, 10) + parseInt(deaths, 10);
+    var activeCases = confirmedCases - clearedCases;
+
+    // Calculation for mild cases
+    var seriousCases = parseInt(severe, 10) + parseInt(critical, 10);
+    var mild = activeCases - seriousCases;
+
+    console.log(seriousCases);
 
     //Calculate percentage fuction
     function percentage(number, total){
@@ -67,6 +79,10 @@ function processJSON(event) {
     $('#deaths').text( formatNum(deaths) );
     $('#recoveryRate').html(`${recoveryRate}% <br> of total cases`);
     $('#deathRate').html(`${deathRate}% <br> of total cases`);
+    $('#activeCases').text(formatNum(activeCases));
+    $('#mild').text(formatNum(mild));
+    $('#critical').text(formatNum(critical));
+    $('#severe').text(formatNum(severe));
     
 
     // All Date objects
@@ -102,9 +118,58 @@ for (i = 0; i < lastSevenUpdates.length; i++){
 }
 
 
+// Active Cases Graph
+$('#showActiveCasesGraph').click(function(){
+    $('#activeCasesInfo').hide();
+    $('#activeCasesGraph').toggle('swing');
+    console.log('button clicked');
+});
 
+// Active cases INFO
+$('#showActiveInfo').click(function(){
+    $('#activeCasesGraph').hide();
+    $('#activeCasesInfo').toggle('swing');
+    console.log('button clicked');
+});
    
+// Chart for Active Cases
+new Chart(document.getElementById("activeGraph"), {
+    type: 'bar',
+    data: {
+      labels: ["Mild", "Severe", "Critical"],
+      datasets: [
+        {
+          label: "Patients",
+          backgroundColor: ["#39c0c4", "#fab800","#d80b0ba1"],
+          data: [percentage(mild, activeCases), percentage(severe, activeCases), percentage(critical, activeCases)]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Seriousness of symptoms'
+      },
+      scales: {
+        yAxes: [{
+            gridLines: {
+                display: false
+            },
+            ticks: {
+                display: false
+            }
+        }],
 
+        xAxes: [{
+            gridLines: {
+                display: false
+            }
+            
+        }]
+    }
+    }
+});
 
 // Last Seven Updates Data Source
 var chartData = {

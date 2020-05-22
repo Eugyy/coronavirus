@@ -349,6 +349,7 @@
             "totalCases": "6486",
             "recoveries": "1951",
             "death": "31",
+            "mild": "",
             "critical": "0",
             "severe": "12"
         }
