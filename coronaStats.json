@@ -349,9 +349,17 @@
             "totalCases": "6486",
             "recoveries": "1951",
             "death": "31",
-            "mild": "",
             "critical": "0",
             "severe": "12"
+        },
+
+        {
+            "date": "2020-05-21",
+            "totalCases": "6617",
+            "recoveries": "1978",
+            "death": "31",
+            "critical": "16",
+            "severe": "0"
         }
 
 
