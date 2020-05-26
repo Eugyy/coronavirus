@@ -360,7 +360,26 @@
             "death": "31",
             "critical": "16",
             "severe": "0"
+        },
+
+        {
+            "date": "2020-05-22",
+            "totalCases": "6683",
+            "recoveries": "1998",
+            "death": "32",
+            "critical": "0",
+            "severe": "16"
+        },
+
+        {
+            "date": "2020-05-23",
+            "totalCases": "6808",
+            "recoveries": "2070",
+            "death": "32",
+            "critical": "0",
+            "severe": "15"
         }
+
 
 
     

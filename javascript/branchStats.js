@@ -9,10 +9,6 @@ xhr.open('GET', 'coronaStats.json');
 xhr.addEventListener('load', processJSON);
 xhr.send();
 
-// add comma to numbers in thousand
-
-
-
 
 //LOAD CORONASTATS JSON
 function processJSON(event) {
@@ -22,7 +18,7 @@ function processJSON(event) {
    // data object
     var myData = obj.data;
     
-    // last update object
+    // last update object in json data
     var lastUpdate = myData.length - 1;
     var confirmedCases = myData[lastUpdate].totalCases;
     var recoveries = myData[lastUpdate].recoveries;
@@ -33,12 +29,9 @@ function processJSON(event) {
     // Calculation for active cases
     var clearedCases = parseInt(recoveries, 10) + parseInt(deaths, 10);
     var activeCases = confirmedCases - clearedCases;
-
     // Calculation for mild cases
     var seriousCases = parseInt(severe, 10) + parseInt(critical, 10);
     var mild = activeCases - seriousCases;
-
-    console.log(seriousCases);
 
     //Calculate percentage fuction
     function percentage(number, total){
@@ -47,33 +40,38 @@ function processJSON(event) {
     var recoveryRate = percentage(recoveries, confirmedCases);
     var deathRate = percentage(deaths, confirmedCases);
 
-    // Days of this week
-
+    // Days of current week
     var startOfWeek = moment().startOf('week');
     var endOfWeek = moment().endOf('week');
-    var days = [];
+    var daysThisWeek = [];
     var day = startOfWeek;
-
+    // Return a list of days of the current week
     while (day <= endOfWeek){
-        days.push(day.toDate().toDateString());
+        var dd = day.format('YYYY-MM-DD');
+        daysThisWeek.push(dd);
         day = day.clone().add(1, 'd');
     }
 
-//     days.forEach(myFunction);
-//    function myFunction(date){
-//         moment(date).format('YYYY-MM-DD');
-//     }
+    // Array of this cases
+    // function thisWkCases(byDate){
+        
+    //     for(i=0; i < 8; i++){
+    //       var fndDate = daysThisWeek[i];
+    //       byDate.date === fndDate;
 
-   var testDate = moment();  
-   
-    console.log(testDate.format('YYYY-MM-DD'));
+    //     }
+        
+    // }
+  
+    console.log(daysThisWeek[0]);
 
-    // Format thousand with comma
+
+    // Format thousands with comma
     function formatNum (num){
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
+    
     // Insert values in DOM
-
     $('#confirmedCases').text( formatNum(confirmedCases) );
     $('#recoveries').text( formatNum(recoveries) );
     $('#deaths').text( formatNum(deaths) );
@@ -85,7 +83,7 @@ function processJSON(event) {
     $('#severe').text(formatNum(severe));
     
 
-    // All Date objects
+    // Get data values for chart plotting
     var allDates = [];
     var allCases = [];
 
@@ -118,22 +116,23 @@ for (i = 0; i < lastSevenUpdates.length; i++){
 }
 
 
-// Active Cases Graph
+                    // Toggle between chart and info [active cases]
+    // Active Cases [Chart]
 $('#showActiveCasesGraph').click(function(){
     $('#activeCasesInfo').hide();
-    $('#activeCasesGraph').toggle('swing');
-    console.log('button clicked');
+    $('#activeCasesGraph').toggle('fade');
 });
 
 // Active cases INFO
 $('#showActiveInfo').click(function(){
     $('#activeCasesGraph').hide();
-    $('#activeCasesInfo').toggle('swing');
-    console.log('button clicked');
+    $('#activeCasesInfo').toggle('fade');
 });
+
+                    // ----->> Creating charts for html canvas
    
-// Chart for Active Cases
-new Chart(document.getElementById("activeGraph"), {
+// Chart for Active Cases --BAR
+new Chart($("#activeGraph"), {
     type: 'bar',
     data: {
       labels: ["Mild", "Severe", "Critical"],
@@ -171,8 +170,8 @@ new Chart(document.getElementById("activeGraph"), {
     }
 });
 
-// Last Seven Updates Data Source
-var chartData = {
+// Last Seven Updates chart config
+var lsData = {
 
     labels: lastSevenDates,
 
@@ -185,7 +184,7 @@ var chartData = {
 };
 
 
-//Data Source
+//Cummulative data chart config
 var cummulativeData = {
 
     labels: allDates,
@@ -199,19 +198,12 @@ var cummulativeData = {
     }]
 };
 
+    // Last 7-days --Line chart
 
-        //Counter animation
-      
-            //Daily Count
-
-
-    /*Line chart*/
-
-    var ctx = document.getElementById('myChart');
-
+    var ctx = $('#myChart');
     var myChart = new Chart(ctx, {
         type: 'line',
-        data: chartData,
+        data: lsData,
    
         options: {
             title: {
@@ -248,7 +240,7 @@ function() {
     var ctx = document.getElementById('myChart');
     myChart = new Chart(ctx, {
         type: 'bar',
-        data: chartData,
+        data: lsData,
         options: {
             scales: {
                 title: {
@@ -282,15 +274,12 @@ function() {
         //Switch to lineChart
 
     document.getElementById('changeToLine').onclick =
-
     function(){
-
         myChart.destroy();
         var ctx = document.getElementById('myChart');
-
         myChart = new Chart(ctx, {
             type: 'line',
-            data: chartData,
+            data: lsData,
        
             options: {
                 title: {
@@ -315,18 +304,13 @@ function() {
                    }]
                }
            }
-       
+           
         });
     };
 
+    // Cummulative Over Time--- Line chart
 
-
-
-    // Cases Over Time
-
-/*Bar chart*/
-
-ctx = document.getElementById('newbarChart');
+ctx = $('#cummulativeLine');
     new Chart(ctx, {
     type: 'line',
     data: cummulativeData,
@@ -340,15 +324,16 @@ ctx = document.getElementById('newbarChart');
         },
         elements: {
             point: {
-                radius: 1,
+                radius: 2,
             }
         }, 
         scales: {
             yAxes: [{
                 gridLines: {
-                    display: true
+                    display: false
                 },
                 ticks: {
+                    display: true,
                     beginAtZero: false
                 }
             }],
@@ -364,17 +349,11 @@ ctx = document.getElementById('newbarChart');
 
 });  
 
+                                // Doughnut charts
 
-
-
-
-// Doughnut charts
-
-          /* Recovery Doghnut chart*/
-
-         ctx = document.getElementById('donotRecChart');
-          var donotRecChart = new Chart(ctx, {
-          
+/* Recovery Doghnut chart*/
+         ctx = $('#donotRecChart');
+          new Chart(ctx, {
               type: 'doughnut',
               data: {
                   labels: ['Cases', 'Recovered'],
@@ -396,12 +375,9 @@ ctx = document.getElementById('newbarChart');
           
           });
           
-                  
-          
-          
                       /* Death Doghnut chart*/
           
-          ctx = document.getElementById('donotDeathChart');
+          ctx = $('#donotDeathChart');
             new Chart(ctx, {
                       
               type: 'doughnut',
