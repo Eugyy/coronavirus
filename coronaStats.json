@@ -378,6 +378,33 @@
             "death": "32",
             "critical": "0",
             "severe": "15"
+        },
+        {
+            "date": "2020-05-24",
+            "totalCases": "6964",
+            "recoveries": "2097",
+            "death": "32",
+            "critical": "0",
+            "severe": "15"
+        },
+
+        {
+            "date": "2020-05-25",
+            "totalCases": "7117",
+            "recoveries": "2317",
+            "death": "34",
+            "critical": "3",
+            "severe": "17"
+        },
+
+
+        {
+            "date": "2020-05-26",
+            "totalCases": "7303",
+            "recoveries": "2412",
+            "death": "34",
+            "critical": "3",
+            "severe": "14"
         }
 
 

@@ -40,6 +40,12 @@ function processJSON(event) {
     var recoveryRate = percentage(recoveries, confirmedCases);
     var deathRate = percentage(deaths, confirmedCases);
 
+    // NEW CASES, RECOVERY, DEATHS
+    currentCases = myData[1].totalCases;
+    prevCase = myData[0].totalCases;
+    newCases = currentCases - prevCase;
+    console.log(newCases);
+
     // Days of current week
     var startOfWeek = moment().startOf('week');
     var endOfWeek = moment().endOf('week');
@@ -52,18 +58,25 @@ function processJSON(event) {
         day = day.clone().add(1, 'd');
     }
 
-    // Array of this cases
-    // function thisWkCases(byDate){
-        
-    //     for(i=0; i < 8; i++){
-    //       var fndDate = daysThisWeek[i];
-    //       byDate.date === fndDate;
+    // Array of this week's cases
+ 
+    dataThisWeek = [];
+    daysThisWeek.forEach(function(item, index) {
+        sDate = daysThisWeek[index];
 
-    //     }
-        
-    // }
-  
-    console.log(daysThisWeek[0]);
+        function isThisWeek(data){
+
+            return data.date === sDate;
+        }
+
+       myNew = myData.find(isThisWeek);
+       dataThisWeek.push(myNew);
+    });
+    
+   
+    console.log(dataThisWeek);
+    // console.log(daysThisWeek);
+
 
 
     // Format thousands with comma
@@ -114,6 +127,7 @@ for (i = 0; i < lastSevenUpdates.length; i++){
   lastSevenCases.push(lsc); 
 
 }
+
 
 
                     // Toggle between chart and info [active cases]

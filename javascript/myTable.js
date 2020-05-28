@@ -36,6 +36,16 @@ function processJSON(event){
     console.log(myData);
 
 
+    //   // Format thousands with comma
+    //   function formatNum (num){
+    //     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    // }
+
+    // for(i=0; i < myData.length; i++ ){
+    //     formatNum(myData[i].cases);
+    // }
+    // console.log(myData[1].cases);
+
      // Dynamic Table
 
      function loadTable(tableId, fields, data) {
