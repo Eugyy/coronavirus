@@ -4,7 +4,7 @@
         
         {
             "region": "Greater Accra",
-            "cases": 5148,
+            "cases": 5331,
             "hotspots": {
                         
                         "Ablekuma Central": 10,
@@ -45,7 +45,7 @@
 
         {
             "region": "Central",
-            "cases": 360,
+            "cases": 376,
             "hotspots": {
                         "Agona West": 1,
                         "AMHD": 3,
@@ -61,7 +61,7 @@
 
         {
             "region": "Western",
-            "cases": 344,
+            "cases": 395,
             "hotspots": {
                         "EKM": 1,
                         "Prestea Valley": 2,
@@ -94,7 +94,7 @@
 
         {
             "region": "Ashanti",
-            "cases": 1099,
+            "cases": 1160,
             "hotspots": {
                         "Afigya Kwabre South": 1,
                         "Atwima Kwanwoma": 1,
@@ -143,7 +143,7 @@
 
         {
             "region": "Western North",
-            "cases": 62,
+            "cases": 63,
             "hotspots": {
                     }
         },
@@ -157,6 +157,13 @@
 
         {
             "region": "Savannah",
+            "cases": 1,
+            "hotspots": {
+                    }
+        },
+
+        {
+            "region": "Bono East",
             "cases": 1,
             "hotspots": {
                     }

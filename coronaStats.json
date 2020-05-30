@@ -347,8 +347,11 @@
         {
             "date": "2020-05-20",
             "totalCases": "6486",
+            "newCases": "217",
             "recoveries": "1951",
+            "newRecoveries": "53",
             "death": "31",
+            "newDeaths": "0",
             "critical": "0",
             "severe": "12"
         },
@@ -405,6 +408,16 @@
             "death": "34",
             "critical": "3",
             "severe": "14"
+        },
+
+
+        {
+            "date": "2020-05-27",
+            "totalCases": "7616",
+            "recoveries": "2421",
+            "death": "34",
+            "critical": "1",
+            "severe": "17"
         }
 
 

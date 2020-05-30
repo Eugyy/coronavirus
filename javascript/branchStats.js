@@ -40,11 +40,19 @@ function processJSON(event) {
     var recoveryRate = percentage(recoveries, confirmedCases);
     var deathRate = percentage(deaths, confirmedCases);
 
-    // NEW CASES, RECOVERY, DEATHS
-    currentCases = myData[1].totalCases;
-    prevCase = myData[0].totalCases;
-    newCases = currentCases - prevCase;
-    console.log(newCases);
+    // // NEW CASES, RECOVERY, DEATHS
+    // myData.forEach( function (element, index) {
+    //     currentCases = element[index].totalCases;
+    //     prevCase = element[index - 1].totalCases;
+    //     newCases = currentCases - prevCase;
+    //     myData[index].push(newCases);
+    // });
+
+
+    // currentCases = myData[1].totalCases;
+    // prevCase = myData[0].totalCases;
+    // newCases = currentCases - prevCase;
+    // console.log(myData);
 
     // Days of current week
     var startOfWeek = moment().startOf('week');
